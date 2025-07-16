@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Post
+
 # Create your views here.
 class PostList(generic.ListView):
     queryset = Post.objects.all()
@@ -28,4 +29,18 @@ def post_detail(request, slug):
         request,
         "blog/post_detail.html",
         {"post": post},
+        
+    )
+
+def about(request):
+    """
+    Display the about page.
+
+    **Template:**
+
+    :template:`blog/about.html`
+    """
+    return render(
+        request,
+        "blog/about.html",
     )
