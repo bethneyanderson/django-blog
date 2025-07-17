@@ -1,14 +1,11 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <div class="container">
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
       <h3>Sign In</h3>
       <form class="login" method="POST" action="{% url 'account_login' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
+        {% csrf_token %} {{ form.as_p }}
         <button class="btn btn-primary" type="submit">Sign In</button>
       </form>
       <p class="mt-3">
