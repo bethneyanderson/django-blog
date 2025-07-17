@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="masthead">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-md-6 masthead-text">
+        <!-- About page title from database -->
+        <h1 class="post-title">
+          {% if about %}
+            {{ about.title }}
+          {% else %}
+            About Me
+          {% endif %}
+        </h1>
+        <!-- About page subtitle -->
+        <p class="post-subtitle">
+          {% if about %}
+            Last updated: {{ about.updated_on|date:"F d, Y" }}
+          {% else %}
+            Learn more about me
+          {% endif %}
+        </p>
+      </div>
+      <div class="d-none d-md-block col-md-6 masthead-image">
+        <img
+          src="{% static 'images/default.jpg' %}"
+          class="scale"
+          alt="About me" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col card mb-4 mt-3 left top">
+      <div class="card-body">
+        {% if about %}
+          <!-- Content from database with rich text formatting -->
+          <div class="card-text">{{ about.content | safe }}</div>
+        {% else %}
+          <!-- Default content if no About record exists -->
+          <h2>Welcome!</h2>
+          <p class="card-text">
+            Welcome to my blog! This page will contain information about me once content is added through the admin panel.
+          </p>
+          <p class="card-text">
+            <em>Please add content through the Django admin panel to see your About Me page.</em>
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

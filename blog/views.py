@@ -31,16 +31,3 @@ def post_detail(request, slug):
         {"post": post},
         
     )
-
-def about(request):
-    """
-    Display the about page.
-
-    **Template:**
-
-    :template:`blog/about.html`
-    """
-    return render(
-        request,
-        "blog/about.html",
-    )
