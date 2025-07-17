@@ -7,8 +7,8 @@ def about_me(request):
     """
     Display an About Me page using content from the database.
     """
-    # Get the first (and ideally only) About instance
-    about = About.objects.first()
+    # Get all About objects, order by updated_on in reverse order, and return the first (most recent)
+    about = About.objects.all().order_by('-updated_on').first()
     
     return render(
         request,
